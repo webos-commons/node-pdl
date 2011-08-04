@@ -1,0 +1,16 @@
+{
+  "author": "Tim Caswell <tim@creationix.com> (http://creationix.com/)",
+  "name": "pdl",
+  "description": "PDL bindings for node",
+  "version": "0.0.0",
+  "repository": {
+    "type": "git",
+    "url": "tim@creationix.com:node-pdl.git"
+  },
+  "main": "build/default/node-pdl.node",
+  "engines": {
+    "node": "0.4"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}
