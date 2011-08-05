@@ -1,27 +1,26 @@
 * PDL_BannerMessagesEnable
 * PDL_CustomPauseUIEnable
-  PDL_EnableCompass
-  PDL_EnableLocationTracking
-  PDL_GesturesEnable
+* PDL_EnableCompass
+* PDL_EnableLocationTracking
+* PDL_GesturesEnable
   PDL_GetAppinfoValue
-  PDL_GetCallingPath
   PDL_GetCompass
-  PDL_GetDataFilePath
-  PDL_GetDeviceName
+* PDL_GetDataFilePath
+* PDL_GetDeviceName
 * PDL_GetHardwareID
-  PDL_GetLanguage
+* PDL_GetLanguage
   PDL_GetLocation
   PDL_GetNetInfo
   PDL_GetOSVersion
-  PDL_GetPDLVersion
-  PDL_GetRegionCountryCode
-  PDL_GetScreenMetrics
+* PDL_GetPDKVersion
+* PDL_GetRegionCountryCode
+* PDL_GetScreenMetrics
 * PDL_GetUniqueID
 * PDL_Init
-  PDL_IsPlugin
-  PDL_LaunchBrowser
-  PDL_LaunchEmail
-  PDL_LaunchEmailTo
+* PDL_IsPlugin
+* PDL_LaunchBrowser
+* PDL_LaunchEmail
+* PDL_LaunchEmailTo
   PDL_Minimize
   PDL_NotifyMusicPlaying
 * PDL_Quit
