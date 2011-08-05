@@ -334,11 +334,11 @@ namespace node_pdl {
     HandleScope scope;
 
     if (!(args.Length() == 2 && args[0]->IsNumber() && args[1]->IsNumber())) {
-      return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected Vibrate(Number)")));
+      return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected Vibrate(Number, Number)")));
     }
 
     int periodMS = args[0]->Int32Value();
-    int durationMS = args[0]->Int32Value();
+    int durationMS = args[1]->Int32Value();
 
     PDL_Err err = PDL_Vibrate(periodMS, durationMS);
     if (err != PDL_NOERROR) return ThrowPDLError(__func__);
