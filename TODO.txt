@@ -1,5 +1,5 @@
 * PDL_BannerMessagesEnable
-  PDL_CustomPauseUIEnable
+* PDL_CustomPauseUIEnable
   PDL_EnableCompass
   PDL_EnableLocationTracking
   PDL_GesturesEnable

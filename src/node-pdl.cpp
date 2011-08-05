@@ -59,6 +59,35 @@ namespace node_pdl {
     return Undefined();
   }
 
+  static Handle<Value> CustomPauseUiEnable(const Arguments& args) {
+    HandleScope scope;
+
+    if (!(args.Length() == 1 && args[0]->IsBoolean())) {
+      return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected CustomPauseUiEnable(Boolean)")));
+    }
+
+    bool enable = args[0]->BooleanValue();
+
+    PDL_Err err = PDL_CustomPauseUiEnable((PDL_bool)enable);
+    if (err != PDL_NOERROR) return ThrowPDLError(__func__);
+
+    return Undefined();
+  }
+
+  static Handle<Value> EnableCompass(const Arguments& args) {
+    HandleScope scope;
+
+    if (!(args.Length() == 1 && args[0]->IsBoolean())) {
+      return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected EnableCompass(Boolean)")));
+    }
+
+    bool activate = args[0]->BooleanValue();
+
+    PDL_Err err = PDL_EnableCompass((PDL_bool)activate);
+    if (err != PDL_NOERROR) return ThrowPDLError(__func__);
+
+    return Undefined();
+  }
 
 
   static Handle<Value> GetHardwareID(const Arguments& args) {
@@ -221,6 +250,8 @@ init(Handle<Object> target)
   NODE_SET_METHOD(target, "init", node_pdl::Init);
   NODE_SET_METHOD(target, "quit", node_pdl::Quit);
   NODE_SET_METHOD(target, "bannerMessagesEnable", node_pdl::BannerMessagesEnable);
+  NODE_SET_METHOD(target, "customPauseUIEnable", node_pdl::CustomPauseUiEnable);
+  NODE_SET_METHOD(target, "enableCompass", node_pdl::EnableCompass);
   NODE_SET_METHOD(target, "getHardwareID", node_pdl::GetHardwareID);
   NODE_SET_METHOD(target, "getUniqueID", node_pdl::GetUniqueID);
   NODE_SET_METHOD(target, "setFirewallPortStatus", node_pdl::SetFirewallPortStatus);
