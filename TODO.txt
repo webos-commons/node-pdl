@@ -21,15 +21,15 @@
 * PDL_LaunchBrowser
 * PDL_LaunchEmail
 * PDL_LaunchEmailTo
-  PDL_Minimize
+* PDL_Minimize
   PDL_NotifyMusicPlaying
 * PDL_Quit
   PDL_ScreenTimeoutEnable
 * PDL_SetFirewallPortStatus
 * PDL_SetKeyboardState
-  PDL_SetOrientation
+* PDL_SetOrientation
   PDL_SetTouchAggression
-  PDL_Vibrate
+* PDL_Vibrate
 --------------------------------------------------------------------------------
 * PDL_RegisterPollingJSHandler
 * PDL_JS_RegistrationComplete
