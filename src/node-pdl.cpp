@@ -44,6 +44,23 @@ namespace node_pdl {
     return Undefined();
   }
 
+  static Handle<Value> BannerMessagesEnable(const Arguments& args) {
+    HandleScope scope;
+
+    if (!(args.Length() == 1 && args[0]->IsBoolean())) {
+      return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected BannerMessagesEnable(Boolean)")));
+    }
+
+    bool enable = args[0]->BooleanValue();
+
+    PDL_Err err = PDL_BannerMessagesEnable((PDL_bool)enable);
+    if (err != PDL_NOERROR) return ThrowPDLError(__func__);
+
+    return Undefined();
+  }
+
+
+
   static Handle<Value> GetHardwareID(const Arguments& args) {
     HandleScope scope;
 
@@ -136,7 +153,7 @@ namespace node_pdl {
   PDL_bool JSRouter(PDL_JSParameters *params) {
     const char* name = PDL_GetJSFunctionName(params);
     const int numParams = PDL_GetNumJSParams(params);
-    
+
     Handle<Value> argv[numParams];
     for (int i = 0; i < numParams; i++) {
       argv[i] = String::New(PDL_GetJSParamString(params, i));
@@ -146,7 +163,7 @@ namespace node_pdl {
     printf("ME!\n");
     return PDL_TRUE;
   }
-  
+
   static Handle<Value> RegisterPollingJSHandler(const Arguments& args) {
     HandleScope scope;
 
@@ -164,17 +181,17 @@ namespace node_pdl {
 
   static Handle<Value> HandleJSCalls(const Arguments& args) {
     HandleScope scope;
-    
+
     if (!(args.Length() == 0)) {
       return ThrowException(Exception::TypeError(String::New("Invalid arguments: Expected HandleJSCalls()")));
     }
-    
+
     int num = PDL_HandleJSCalls();
     if (num < 0) return ThrowPDLError(__func__);
 
     return Number::New(num);
   }
- 
+
 }
 
 
@@ -182,7 +199,7 @@ extern "C" void
 init(Handle<Object> target)
 {
   HandleScope scope;
-  
+
   node_pdl::functionMap = Persistent<Object>::New(Object::New());
 
   // Hardware Types
@@ -203,6 +220,7 @@ init(Handle<Object> target)
   // Bound functions
   NODE_SET_METHOD(target, "init", node_pdl::Init);
   NODE_SET_METHOD(target, "quit", node_pdl::Quit);
+  NODE_SET_METHOD(target, "bannerMessagesEnable", node_pdl::BannerMessagesEnable);
   NODE_SET_METHOD(target, "getHardwareID", node_pdl::GetHardwareID);
   NODE_SET_METHOD(target, "getUniqueID", node_pdl::GetUniqueID);
   NODE_SET_METHOD(target, "setFirewallPortStatus", node_pdl::SetFirewallPortStatus);
@@ -211,7 +229,7 @@ init(Handle<Object> target)
   NODE_SET_METHOD(target, "callJS", node_pdl::CallJS);
   NODE_SET_METHOD(target, "registerPollingJSHandler", node_pdl::RegisterPollingJSHandler);
   NODE_SET_METHOD(target, "handleJSCalls", node_pdl::HandleJSCalls);
-  
+
 }
 
 
